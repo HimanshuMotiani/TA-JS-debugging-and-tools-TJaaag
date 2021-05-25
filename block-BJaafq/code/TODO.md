@@ -18,9 +18,22 @@
 4. Make first test fail and see if you get the result of second test.
 5. If not fix it using the test framework (try...catch) we learned in the testing framework video.
 ```js
-funtion add(numA,numB){
+function add(numA,numB){
     return numA+numB;
 }
-add(1,2);
+function expect(actual){
+    return {toEqual: function(expected){
+        if(actual != expected){
+            throw new Error(`${actual} is not equal to ${expected}`)
+        }
+    }
+    }
+}
+function testAdd(){
+let result = add(1,2)
+expected = 2;
+expect(result).toEqual(expected)
+}
+testAdd("adding two num",testAdd());
 
 ```
